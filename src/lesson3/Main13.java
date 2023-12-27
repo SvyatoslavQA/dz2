@@ -16,8 +16,8 @@ public class Main13 {
         }
         if (indexToRemove != -1) {
             int[] newArray = new int[array.length - 1];
-            System.arraycopy(array, 0, newArray, 0, indexToRemove);
-            System.arraycopy(array, indexToRemove + 1, newArray, indexToRemove, array.length - indexToRemove - 1);
+            System.arraycopy(array, 0, newArray, 0, indexToRemove); //подсмотрел в гугле
+            System.arraycopy(array, indexToRemove + 1, newArray, indexToRemove, array.length - indexToRemove - 1); //подсмотрел в гугле
 
             System.out.println("Исходный массив: " + Arrays.toString(array));
             System.out.println("Новый массив после удаления элемента " + number + ": " + Arrays.toString(newArray));
