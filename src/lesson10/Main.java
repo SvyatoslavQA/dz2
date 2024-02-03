@@ -43,9 +43,7 @@ public class Main {
 
     public static void replacedBlocks(String document) {
         String modifiedDocument = document.replaceAll("[a-zA-Z]{3}", "***");
-
-        // Выводим модифицированный номер документа
-        System.out.println(modifiedDocument);
+        System.out.println("updated blocked document: " + modifiedDocument);
     }
 
     public static void documentLettersToLowerCase(String document) {
