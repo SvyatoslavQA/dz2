@@ -12,14 +12,13 @@ package lesson11;
 //ФОРМАТИРОВАНИЕ
 
 public class CustomArrayList<T> {
-    private static final int defSize = 7;
+    private static final int DEFAULT_SIZE = 7;
     private Object[] array;
     private int size;
 
     public CustomArrayList() {
-        this.array = new Object[defSize];
-        this.size = 0;
-    }
+        this(DEFAULT_SIZE);
+    } //Лучше делать this(defSize). Тогда у тебя не будет дублирования кода и если придется что-то менять, то в одном месте
 
     public CustomArrayList(int initialSize) {
 
@@ -34,8 +33,10 @@ public class CustomArrayList<T> {
 
 
     public T get(int index) {
-
-        return (T) array[index];
+        if (index >= 0 && index < size) {
+            return (T) array[index];
+        }
+        throw new IndexOutOfBoundsException("Index:" + index + ", Size:" + size); //нужно проверять что индекс больше нуля и меньше size
     }
 
     public boolean remove(T element) {
@@ -49,15 +50,17 @@ public class CustomArrayList<T> {
     }
 
     public T removeAtIndex(int index) {
-
-
-        T removedElement = (T) array[index];
-        for (int i = index; i < size - 1; i++) {
-            array[i] = array[i + 1];
+        // Проверяем, что индекс в пределах размера массива
+        if (index >= 0 && index < size) {
+            T removedElement = (T) array[index];
+            for (int i = index; i < size - 1; i++) {
+                array[i] = array[i + 1];
+            }
+            array[size - 1] = null;
+            size--;
+            return removedElement;
         }
-        array[size - 1] = null;
-        size--;
-        return removedElement;
+        throw new IndexOutOfBoundsException("Index:" + index + ", Size:" + size);
     }
 
     public boolean contains(T element) {
