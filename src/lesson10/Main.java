@@ -42,7 +42,7 @@ public class Main {
 
 
     public static void replacedBlocks(String document) {
-        String modifiedDocument = document.replaceAll("[a-zA-Z]{3}", "***");
+        String modifiedDocument = document.replaceAll("[A-z]{3}", "***");
         System.out.println("updated blocked document: " + modifiedDocument);
     }
 
