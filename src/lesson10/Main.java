@@ -19,6 +19,7 @@ public class Main {
         String document = "5554-abc-5678-def-1a2b";
 
         getFirstEightDigits(document);
+        replacedBlocks(document);
         documentLettersToLowerCase(document);
         documentLettersToUpperCase(document);
         documentHas(document, "abc");
@@ -40,8 +41,10 @@ public class Main {
     }
 
 
-    ////вывести на экран номер документа но блоки из трех букв заменить на ***
-    //TO DO пока не получается
+    public static void replacedBlocks(String document) {
+        String modifiedDocument = document.replaceAll("[A-z]{3}", "***");
+        System.out.println("updated blocked document: " + modifiedDocument);
+    }
 
     public static void documentLettersToLowerCase(String document) {
         StringBuilder result = new StringBuilder();
@@ -60,6 +63,7 @@ public class Main {
         for (char c : document.toCharArray()) {
             if (Character.isLetter(c)) {
                 result.append(Character.toUpperCase(c));
+                result.append("/");
             }
         }
         System.out.println(result);
